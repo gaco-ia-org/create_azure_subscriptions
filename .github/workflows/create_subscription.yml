@@ -1,0 +1,23 @@
+name: Create Azure Subscription
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_name:
+        description: 'Nombre de la suscripción que se creará'
+        required: true
+        default: 'TestSubscription'
+
+jobs:
+  create-subscription:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar entorno Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Crear suscripción simulada
+        run: |
+          echo "Simulando la creación de la suscripción..."
+          python -c "print(f'Creación de la suscripción: { '${{ github.event.inputs.subscription_name }}' }')"
